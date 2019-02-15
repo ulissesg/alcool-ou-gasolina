@@ -27,13 +27,17 @@ public class MainActivity extends AppCompatActivity {
         calcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String pAlcool = precoAlcool.getText().toString();
                 String pGasolina = precoGasolina.getText().toString();
 
-                Double valorAlcool = Double.parseDouble(pAlcool);
-                Double valorGasolina = Double.parseDouble(pGasolina);
+                if (pAlcool.length() < 1 || pGasolina.length() < 1){
 
-                if (valorAlcool > 0 && valorGasolina > 0){
+                    resultado.setText("Campo(s) em branco !");
+
+                }else{
+                    Double valorAlcool = Double.parseDouble(pAlcool);
+                    Double valorGasolina = Double.parseDouble(pGasolina);
 
                     Double res = valorAlcool / valorGasolina;
 
@@ -42,13 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         resultado.setText("É melhor utilizar Gasolina !");
                     }
-
-                }else{
-
-                    resultado.setText("Campo(s) em branco !");
-
                 }
-
             }
         });
     }
